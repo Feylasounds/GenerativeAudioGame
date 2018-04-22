@@ -40,15 +40,7 @@ public class coremanager : MonoBehaviour {
 	public float HPFA;
 	public float speed;
 
-	//Orientation Control
-
-	public float cameraX;
-	public float cameraY;
-	public float cameraZ;
-
 	// Harry's Amplitude Transform Control
-
-
 
 	public float[] freqscale;
 	public float ampsum = 0;
@@ -82,27 +74,27 @@ public class coremanager : MonoBehaviour {
 
 		Hv_coreofinal_AudioLib CoreA = GetComponent<Hv_coreofinal_AudioLib> ();
 
-		float MastVoiceVolA = 0.9f;
-		float OscMidiFreqA = 26 + Mathf.Round(Random.value * 100f);
+		MastVoiceVolA = 0.9f;
+		OscMidiFreqA = 26 + Mathf.Round(Random.value * 100f);
 
-		float MetroA = 4000f;
+		MetroA = 4000f;
 
-		float AtktA = Random.value * 500f;
-		float DectA = Random.value * 500f;
+		AtktA = Random.value * 500f;
+		DectA = Random.value * 500f;
 
-		float objVarA = Mathf.Round (Random.value * 16);
+		objVarA = Mathf.Round (Random.value * 16);
 
-		float HV1A = Random.value;
-		float HV2A = Random.value;
-		float HV3A = Random.value;
-		float HV4A = Random.value;
+		HV1A = Random.value;
+		HV2A = Random.value;
+		HV3A = Random.value;
+		HV4A = Random.value;
 
-		float HF1A = Random.value * 25f;
-		float HF2A = Random.value * 25f;
-		float HF3A = Random.value * 25f;
-		float HF4A = Random.value * 25f;
+		HF1A = Random.value * 25f;
+		HF2A = Random.value * 25f;
+		HF3A = Random.value * 25f;
+		HF4A = Random.value * 25f;
 
-		float DistA = 0.01f + (Random.value * 2);
+		DistA = 0.01f + (Random.value * 2);
 
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Masterclock, MetroA);
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Objvar, objVarA);
@@ -111,9 +103,9 @@ public class coremanager : MonoBehaviour {
 
 		CoreA.SetFloatParameter(Hv_coreofinal_AudioLib.Parameter.Oscfreq, OscMidiFreqA);
 
-		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Atkt, AtktA);
+		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Atkt, AtktA); //Attack Time
 
-		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Dect, DectA);
+		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Dect, DectA); //Decay Time
 
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Hv1, HV1A);
 

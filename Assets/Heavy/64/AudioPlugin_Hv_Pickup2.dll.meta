@@ -1,17 +1,23 @@
 fileFormatVersion: 2
-guid: cf7f0ca9994bb9e4182c784c13c76e43
+guid: a4528814553ec2b409fde66324fdf7b7
 timeCreated: 1481411432
 licenseType: Free
 PluginImporter:
-  serializedVersion: 1
+  externalObjects: {}
+  serializedVersion: 2
   iconMap: {}
   executionOrder: {}
   isPreloaded: 1
+  isOverridable: 0
   platformData:
-    Any:
+  - first:
+      Any: 
+    second:
       enabled: 1
       settings: {}
-    Editor:
+  - first:
+      Editor: Editor
+    second:
       enabled: 0
       settings:
         DefaultValueInitialized: true

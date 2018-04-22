@@ -39,6 +39,8 @@ public class coremanager : MonoBehaviour {
 	public float LPFA;
 	public float HPFA;
 	public float speed;
+    public float delayTimeLeft;
+    public float delayTimeRight;
 
 	// Harry's Amplitude Transform Control
 
@@ -94,7 +96,9 @@ public class coremanager : MonoBehaviour {
 		HF3A = Random.value * 25f;
 		HF4A = Random.value * 25f;
 
-		DistA = 0.01f + (Random.value * 2);
+        DistA = 0.01f + (Random.value * 2);
+        delayTimeLeft = (Random.value * 4000);
+        delayTimeRight = (Random.value * 4000);
 
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Masterclock, MetroA);
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Objvar, objVarA);
@@ -127,13 +131,15 @@ public class coremanager : MonoBehaviour {
 
 		CoreA.SetFloatParameter (Hv_coreofinal_AudioLib.Parameter.Lowpassfreq, LPFA);
 
+        CoreA.SetFloatParameter(Hv_coreofinal_AudioLib.Parameter.Delaytimeleft, delayTimeLeft);
+
+        CoreA.SetFloatParameter(Hv_coreofinal_AudioLib.Parameter.Delaytimeright, delayTimeRight);
 
 
 
+        //PD Send Receiver Callback
 
-		//PD Send Receiver Callback
-
-		CoreA.RegisterSendHook();
+        CoreA.RegisterSendHook();
 
 		CoreA.FloatReceivedCallback += OnFloatMessage;
 

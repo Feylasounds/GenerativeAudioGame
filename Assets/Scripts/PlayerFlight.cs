@@ -14,27 +14,20 @@ public class PlayerFlight : MonoBehaviour {
 	public float EngineFreq = 200f;
 	public float EngineAmp = 0.5f;
 	public float entropy = 1.0f;
-
-
+	
+	
 	// Use this for initialization
-	void Start () {
-        Debug.Log("Player Script Added to: " + gameObject.name);
-	
+	void Start () {	
 		HeavyScriptEng.amplitude = EngineAmp;
-		HeavyScriptEng.SendEvent (Hv_engine_AudioLib.Event.Mastervoiceonoff);
-
+		HeavyScriptEng.SendEvent(Hv_engine_AudioLib.Event.Mastervoiceonoff);
+	
 		//HeavyScriptEng.oscFreq = EngineFreq;
-
-
-	
-	
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
         transform.position += transform.forward * Time.deltaTime * speed;
-
-	
 
 		if (Input.GetKey (KeyCode.LeftShift)) {
 			speed += (Time.deltaTime * acceleration);
@@ -43,15 +36,23 @@ public class PlayerFlight : MonoBehaviour {
 		if (Input.GetKey (KeyCode.LeftControl)) {
 			speed -= (Time.deltaTime * acceleration);
 		}
+		
+		// turn left and right
+		transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 45 * Time.deltaTime);
+		
+		// pitch up and down
+		Quaternion targetPitch = Quaternion.AngleAxis(45 * Input.GetAxis("Vertical"), transform.right);
+		
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, transform.localRotation*targetPitch, Time.deltaTime);
 
-		transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Zaxis"), -Input.GetAxis("Horizontal")); 
+		//transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Zaxis"), -Input.GetAxis("Horizontal")); 
 		HeavyScriptEng.filterFreq = speed * speedfilt * 10;
 
 
 		HeavyScriptEng.SetFloatParameter(Hv_engine_AudioLib.Parameter.Oscfreq, speed * speedosc * 20);
 
 
-				speed -= transform.forward.y * Time.deltaTime * gravity;
+		speed -= transform.forward.y * Time.deltaTime * gravity;
 		speed -= transform.forward.z * Time.deltaTime * entropy;
 
 

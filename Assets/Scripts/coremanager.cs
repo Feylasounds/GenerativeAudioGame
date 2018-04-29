@@ -76,13 +76,13 @@ public class coremanager : MonoBehaviour {
 
 		Hv_coreofinal_AudioLib CoreA = GetComponent<Hv_coreofinal_AudioLib> ();
 
-		MastVoiceVolA = 0.9f;
-		OscMidiFreqA = 26 + Mathf.Round(Random.value * 100f);
+		MastVoiceVolA = 0.8f;
+		OscMidiFreqA = 1 + Mathf.Round(Random.value * 90f);
 
-		MetroA = 4000f;
+		MetroA = 4000f + Random.value * 12000f;
 
 		AtktA = Random.value * 500f;
-		DectA = Random.value * 500f;
+		DectA = Random.value * 1000f;
 
 		objVarA = Mathf.Round (Random.value * 16);
 
@@ -91,10 +91,10 @@ public class coremanager : MonoBehaviour {
 		HV3A = Random.value;
 		HV4A = Random.value;
 
-		HF1A = Random.value * 25f;
-		HF2A = Random.value * 25f;
-		HF3A = Random.value * 25f;
-		HF4A = Random.value * 25f;
+		HF1A = Random.value * 15f;
+		HF2A = Random.value * 15f;
+		HF3A = Random.value * 15f;
+		HF4A = Random.value * 15f;
 
         DistA = 0.01f + (Random.value * 2);
         delayTimeLeft = (Random.value * 4000);

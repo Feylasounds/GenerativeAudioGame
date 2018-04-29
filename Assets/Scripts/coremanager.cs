@@ -201,18 +201,18 @@ public class coremanager : MonoBehaviour {
 
 	//Trigger Detection Section
 
-	void OnTriggerEnter ( Collider other){
-
+	void OnTriggerEnter ( Collider other)
+		{
 		Corerender1.enabled = false;
 		Corecol1.enabled = false;
 		Core1.spatialBlend = 0;
 		foreach (Transform child in transform) {
 			child.gameObject.SetActive(false);
 		}	
-		GameObject.FindWithTag("Enemy").SetActive(false);
+		
+		transform.GetChild(1).gameObject.SetActive(false);
 	
-
-
-
+			
+			
 		}
 }

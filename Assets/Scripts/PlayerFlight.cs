@@ -36,14 +36,25 @@ public class PlayerFlight : MonoBehaviour {
 		if (Input.GetKey (KeyCode.LeftControl)) {
 			speed -= (Time.deltaTime * acceleration);
 		}
+
+		float maxRotation = 85;
 		
-		// turn left and right
-		transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 45 * Time.deltaTime);
+		Quaternion desiredRotation = Quaternion.Euler(
+			-Input.GetAxis("Vertical") * maxRotation, // pitch
+			transform.localEulerAngles.y + Input.GetAxis("Horizontal") * maxRotation, // yaw
+			0 //-Input.GetAxis("Horizontal") * 45 // roll
+		);
+
+		// advance towards desiredRotation by factor of Time.deltaTime
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, desiredRotation, Time.deltaTime);
+		Vector3 zeroZ = transform.localEulerAngles;
+		zeroZ.z = 0;
+		transform.localEulerAngles = zeroZ;
 		
-		// pitch up and down
-		Quaternion targetPitch = Quaternion.AngleAxis(45 * Input.GetAxis("Vertical"), transform.right);
 		
-		transform.localRotation = Quaternion.Lerp(transform.localRotation, transform.localRotation*targetPitch, Time.deltaTime);
+		//Quaternion targetPitch = Quaternion.AngleAxis(45 * Input.GetAxis("Vertical"), transform.right);
+		
+		//transform.localRotation = Quaternion.Lerp(transform.localRotation, transform.localRotation*targetPitch, Time.deltaTime);
 
 		//transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Zaxis"), -Input.GetAxis("Horizontal")); 
 		HeavyScriptEng.filterFreq = speed * speedfilt * 10;
@@ -54,8 +65,5 @@ public class PlayerFlight : MonoBehaviour {
 
 		speed -= transform.forward.y * Time.deltaTime * gravity;
 		speed -= transform.forward.z * Time.deltaTime * entropy;
-
-
-
 	}
 }

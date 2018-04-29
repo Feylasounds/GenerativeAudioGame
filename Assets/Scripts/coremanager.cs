@@ -77,7 +77,7 @@ public class coremanager : MonoBehaviour {
 		Hv_coreofinal_AudioLib CoreA = GetComponent<Hv_coreofinal_AudioLib> ();
 
 		MastVoiceVolA = 0.8f;
-		OscMidiFreqA = 1 + Mathf.Round(Random.value * 90f);
+		OscMidiFreqA = 1 + Mathf.Round(Random.value * 120f);
 		
 		//Clock Loop Length. For a static, all-encompassing loop, remove Random.value * 12000f
 		//With this in place, all orbs will operate on an independent loop-length, making the piece hardly repetitive.
@@ -96,10 +96,10 @@ public class coremanager : MonoBehaviour {
 		HV3A = Random.value;
 		HV4A = Random.value;
 		//Upper partial spectral structure? Needs clarification
-		HF1A = Random.value * 15f;
-		HF2A = Random.value * 15f;
-		HF3A = Random.value * 15f;
-		HF4A = Random.value * 15f;
+		HF1A = Random.value * 20f;
+		HF2A = Random.value * 20f;
+		HF3A = Random.value * 20f;
+		HF4A = Random.value * 20f;
 		//Distortion Level
         DistA = 0.01f + (Random.value * 2);
 		

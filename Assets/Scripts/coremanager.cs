@@ -76,7 +76,7 @@ public class coremanager : MonoBehaviour {
 
 		Hv_coreofinal_AudioLib CoreA = GetComponent<Hv_coreofinal_AudioLib> ();
 
-		MastVoiceVolA = 0.8f;
+		MastVoiceVolA = 0.8f; //Voice Volume or Amplitude: Controls Amp at the End of the Chain
 		OscMidiFreqA = 1 + Mathf.Round(Random.value * 120f);
 		
 		//Clock Loop Length. For a static, all-encompassing loop, remove Random.value * 12000f
@@ -96,7 +96,7 @@ public class coremanager : MonoBehaviour {
 		HV3A = Random.value;
 		HV4A = Random.value;
 		//Upper partial spectral structure? Needs clarification
-		HF1A = Random.value * 20f;
+		HF1A = Mathf.Sin (Random.value *20f);
 		HF2A = Random.value * 20f;
 		HF3A = Random.value * 20f;
 		HF4A = Random.value * 20f;

@@ -9,7 +9,7 @@ public class PlayerFlight : MonoBehaviour {
 	public float speedosc = 1f;
 	public float speedfilt = 1f;
     public float gravity = 30.0f;
-	public float acceleration = 1.0f;
+	public float acceleration = 2.0f;
 	public Hv_engine_AudioLib HeavyScriptEng;
 	public float EngineFreq = 200f;
 	public float EngineAmp = 0.5f;

@@ -14,6 +14,8 @@ public class PlayerFlight : MonoBehaviour {
 	public float EngineFreq = 200f;
 	public float EngineAmp = 0.5f;
 	public float entropy = 1.0f;
+
+	private float pitch = 0;
 	
 	
 	// Use this for initialization
@@ -30,23 +32,45 @@ public class PlayerFlight : MonoBehaviour {
         transform.position += transform.forward * Time.deltaTime * speed;
 
 		if (Input.GetKey (KeyCode.LeftShift)) {
-			speed += (Time.deltaTime * acceleration);
+			speed += Time.deltaTime * acceleration;
 		}
 
 		if (Input.GetKey (KeyCode.LeftControl)) {
-			speed -= (Time.deltaTime * acceleration);
+			speed -= Time.deltaTime * acceleration;
 		}
 
+		float vertical = 0;
+		float horizontal = 0;
+
+		if (Input.GetKey(KeyCode.DownArrow))
+		{
+			vertical += 1;
+		}
+		if (Input.GetKey(KeyCode.UpArrow))
+		{
+			vertical -= 1;
+		}
+		if (Input.GetKey(KeyCode.LeftArrow))
+		{
+			horizontal -= 1;
+		}
+		if (Input.GetKey(KeyCode.RightArrow))
+		{
+			horizontal += 1;
+		}
+		
 		float maxRotation = 85;
+
+		pitch = Mathf.Clamp(pitch + vertical * 90 * Time.deltaTime, -maxRotation, maxRotation);
 		
 		Quaternion desiredRotation = Quaternion.Euler(
-			-Input.GetAxis("Vertical") * maxRotation, // pitch
-			transform.localEulerAngles.y + Input.GetAxis("Horizontal") * maxRotation, // yaw
-			0 //-Input.GetAxis("Horizontal") * 45 // roll
+			pitch,
+			transform.localEulerAngles.y + horizontal * 360 * Time.deltaTime, // yaw
+			0
 		);
 
 		// advance towards desiredRotation by factor of Time.deltaTime
-		transform.localRotation = Quaternion.Lerp(transform.localRotation, desiredRotation, Time.deltaTime);
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, desiredRotation, 10 * Time.deltaTime);
 		Vector3 zeroZ = transform.localEulerAngles;
 		zeroZ.z = 0;
 		transform.localEulerAngles = zeroZ;

@@ -510,8 +510,8 @@ public class Hv_coreofinal_AudioLib : MonoBehaviour {
   public void FillTableWithMonoAudioClip(string tableName, AudioClip clip) {
     if (clip.channels > 1) {
       Debug.LogWarning("Hv_coreofinal_AudioLib: Only loading first channel of '" +
-          clip.name + "' into table '" +
-          tableName + "'. Multi-channel files are not supported.");
+         clip.name + "' into table '" +
+         tableName + "'. Multi-channel files are not supported.");
     }
     float[] buffer = new float[clip.samples]; // copy only the 1st channel
     clip.GetData(buffer, 0);

@@ -4,8 +4,8 @@ using System.Collections;
 public class SphereRotation : MonoBehaviour {
 
 	public GameObject mainObject;
-	public float angle = 100f;
-	public float speed = 0.3f;
+	public float angle = Mathf.Round(Random.value * 360f);
+	public float speed = Random.value * 10f;
 	public float xaxis = 1f;
 	public float yaxis = 1f;
 	public float direction = 1f;

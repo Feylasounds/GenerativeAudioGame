@@ -65,7 +65,7 @@ public class PlayerFlight : MonoBehaviour {
 		
 		Quaternion desiredRotation = Quaternion.Euler(
 			pitch,
-			transform.localEulerAngles.y + horizontal * 360 * Time.deltaTime, // yaw
+			transform.localEulerAngles.y + horizontal * 720 * Time.deltaTime, // yaw
 			0
 		);
 

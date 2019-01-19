@@ -4,48 +4,18 @@ using System.Collections;
 public class SphereRotation : MonoBehaviour {
 
 	public GameObject mainObject;
-	public float angle = Mathf.Round(Random.value * 360f);
-	public float speed = Random.value * 10f;
-	public float xaxis = 1f;
-	public float yaxis = 1f;
-	public float direction = 1f;
-	public float speedmult = 10f;
-	public float speedrand = 1f;
+    private float period;
+    private float radius;
+    private Vector3 axis;
 
-
-	void Start(){
-
-		if (Random.value < 0.5f)
-			direction = 1.0f;
-		 else
-			direction = -1.0f;
-
-		if (Random.value < 0.5f)
-			xaxis = 1.0f;
-		else
-			xaxis = 0f;
-
-		if (xaxis == 0f)
-			yaxis = 1f;
-		
-		else if (Random.value < 0.5f)
-			yaxis = 1f;
-		else
-			yaxis = 0f;
-
-		speedrand = (Random.value) * speedmult;
+    void Start() {
+        period = Random.Range(6, 20);
+        radius = Random.Range(5, 30);
+        axis = Random.onUnitSphere;
+        transform.position = axis * radius;
 	}
-		
 
-
-
-
-		void FixedUpdate() {
-
-
-
-		transform.RotateAround(mainObject.transform.position, Vector3.up, angle * (Time.deltaTime * speed * direction * xaxis * speedrand));
-		transform.RotateAround(mainObject.transform.position, Vector3.right, angle * (Time.deltaTime * speed * direction * yaxis * speedrand));
-
-	}
+    void Update() {
+        transform.RotateAround(Vector3.zero, axis, (360f / period) * Time.deltaTime);
+    }
 }

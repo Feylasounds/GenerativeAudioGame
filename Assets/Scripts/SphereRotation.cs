@@ -4,12 +4,12 @@ using System.Collections;
 public class SphereRotation : MonoBehaviour {
 
 	public GameObject mainObject;
-    private float period;
+    private float velocity;
     private float radius;
     private Vector3 axis;
 
     void Start() {
-        period = Random.Range(6, 20);
+        velocity = Random.Range(1200, 4000);
         radius = Random.Range(60, 360);
         Vector3 basis1 = Random.onUnitSphere;
         Vector3 basis2 = Random.onUnitSphere;
@@ -18,6 +18,6 @@ public class SphereRotation : MonoBehaviour {
 	}
 
     void Update() {
-        transform.RotateAround(Vector3.zero, axis, (360f / period) * Time.deltaTime);
+        transform.RotateAround(Vector3.zero, axis, (velocity / radius) * Time.deltaTime);
     }
 }

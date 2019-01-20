@@ -31,11 +31,11 @@ public class PlayerFlight : MonoBehaviour {
 	void Update () {
         transform.position += transform.forward * Time.deltaTime * speed;
 
-		if (Input.GetKey (KeyCode.LeftShift)) {
+		if (Input.GetKey (KeyCode.Space)) {
 			speed += Time.deltaTime * acceleration;
 		}
 
-		if (Input.GetKey (KeyCode.LeftControl)) {
+		if (Input.GetKey (KeyCode.LeftShift)) {
 			speed -= Time.deltaTime * acceleration;
 		}
 
@@ -45,11 +45,11 @@ public class PlayerFlight : MonoBehaviour {
         //Arrow Keys
 		    if (Input.GetKey(KeyCode.DownArrow))
 		    {
-			    vertical += 1;
+			    vertical += 1.5f;
 		    }
 		    if (Input.GetKey(KeyCode.UpArrow))
 		    {
-			    vertical -= 1;
+			    vertical -= 1.5f;
 		    }
 		    if (Input.GetKey(KeyCode.LeftArrow))
 		    {
@@ -63,11 +63,11 @@ public class PlayerFlight : MonoBehaviour {
         //WASD
             if (Input.GetKey(KeyCode.S))
             {
-                vertical += 1;
+                vertical += 1.5f;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                vertical -= 1;
+                vertical -= 1.5f;
             }
             if (Input.GetKey(KeyCode.A))
             {

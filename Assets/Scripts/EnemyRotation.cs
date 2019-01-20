@@ -11,8 +11,8 @@ public class EnemyRotation : MonoBehaviour
 
     void Start()
     {
-        velocity = Random.Range(1, 10);
-        radius = Random.Range(6, 10);
+        velocity = Random.Range(1, 4);
+        radius = Random.Range(6, 40);
         Vector3 basis1 = Random.onUnitSphere;
         Vector3 basis2 = Random.onUnitSphere;
         axis = Vector3.Cross(basis1, basis2);

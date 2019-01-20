@@ -216,8 +216,8 @@ public class coremanager : MonoBehaviour {
 		    Corerender1.enabled = false;
 		    Corecol1.enabled = false;
 		    Core1.spatialBlend = 0;
-		    foreach (Transform child in transform)
-            {
+
+		    foreach (Transform child in transform) {
 			    child.gameObject.SetActive(false);
 		    }	
 		

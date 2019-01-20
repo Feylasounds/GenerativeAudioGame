@@ -19,5 +19,6 @@ public class SphereRotation : MonoBehaviour {
 
     void Update() {
         transform.RotateAround(Vector3.zero, axis, (velocity / radius) * Time.deltaTime);
+        transform.Rotate(0, (360*Time.deltaTime/4), 0);
     }
 }

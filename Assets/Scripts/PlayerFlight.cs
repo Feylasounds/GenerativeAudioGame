@@ -42,24 +42,43 @@ public class PlayerFlight : MonoBehaviour {
 		float vertical = 0;
 		float horizontal = 0;
 
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
-			vertical += 1;
-		}
-		if (Input.GetKey(KeyCode.UpArrow))
-		{
-			vertical -= 1;
-		}
-		if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			horizontal -= 1;
-		}
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			horizontal += 1;
-		}
-		
-		float maxRotation = 85;
+        //Arrow Keys
+		    if (Input.GetKey(KeyCode.DownArrow))
+		    {
+			    vertical += 1;
+		    }
+		    if (Input.GetKey(KeyCode.UpArrow))
+		    {
+			    vertical -= 1;
+		    }
+		    if (Input.GetKey(KeyCode.LeftArrow))
+		    {
+			    horizontal -= 1;
+		    }
+		    if (Input.GetKey(KeyCode.RightArrow))
+		    {
+			    horizontal += 1;
+		    }
+
+        //WASD
+            if (Input.GetKey(KeyCode.S))
+            {
+                vertical += 1;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                vertical -= 1;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                horizontal -= 1;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                horizontal += 1;
+            }
+
+        float maxRotation = 85;
 
 		pitch = Mathf.Clamp(pitch + vertical * 90 * Time.deltaTime, -maxRotation, maxRotation);
 		

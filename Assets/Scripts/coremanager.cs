@@ -80,26 +80,32 @@ public class coremanager : MonoBehaviour {
 		OscMidiFreqA = 1 + Mathf.Round(Random.value * 120f);
 		
 		//Clock Loop Length. For a static, all-encompassing loop, remove Random.value * 12000f
-		//With this in place, all orbs will operate on an independent loop-length, making the piece hardly repetitive.
+		//With this in place, all cores will operate on an independent loop-length, making the piece hardly repetitive.
 		MetroA = 4000f + Random.value * 12000f;
-		
-		//Attack and Decay Times
-		AtktA = Random.value * 500f;
-		DectA = Random.value * 1000f;
-		
-		//Place within loop time
-		objVarA = Mathf.Round (Random.value * 16);
+
+        //Attack and Decay Times: If Attack Time is less-than or equal to 150ms, set it to a random value between 1ms and 10ms. etc
+        AtktA = Random.Range(1f, 400f);
+            if(AtktA <= 150f) {
+                AtktA = Random.Range(5f, 15f);
+            }
+        DectA = Random.Range(50f, 2000f);
+            if (DectA <= 900f) { 
+                DectA = Random.Range(40f, 100f);
+            }
+
+        //Place within loop time
+        objVarA = Mathf.Round (Random.value * 16);
 
 		//Upper partial amplitudes? Needs clarification
-		HV1A = Random.value;
-		HV2A = Random.value;
-		HV3A = Random.value;
-		HV4A = Random.value;
+		HV1A = (Random.value * 10f);
+        HV2A = (Random.value * 10f);
+		HV3A = (Random.value * 10f);
+		HV4A = (Random.value * 10f);
 		//Upper partial spectral structure? Needs clarification
-		HF1A = Mathf.Sin (Random.value *20f);
-		HF2A = Random.value * 20f;
-		HF3A = Random.value * 20f;
-		HF4A = Random.value * 20f;
+		HF1A = Mathf.Sin(Random.Range(10f, 20f) * 10);
+		HF2A = Mathf.Sin(Random.Range(10f, 20f) * 10);
+        HF3A = Mathf.Sin(Random.Range(10f, 20f) * 10);
+		HF4A = Mathf.Sin(Random.Range(10f, 20f) * 10);
 		//Distortion Level
         DistA = 0.01f + (Random.value * 2);
 		
@@ -174,7 +180,7 @@ public class coremanager : MonoBehaviour {
 	//Heavy Send Receiver
 
 	void OnFloatMessage(Hv_coreofinal_AudioLib.FloatMessage message) {
-		Debug.Log(message.receiverName + ": " + message.value);
+	//	Debug.Log(message.receiverName + ": " + message.value);
 
 		float CoreScaleB = 20 * message.value;
 	
@@ -203,23 +209,18 @@ public class coremanager : MonoBehaviour {
 		speed = PlayerFlight.extspeed;
 	}
 
-
-
-
 	//Trigger Detection Section
 
-	void OnTriggerEnter ( Collider other)
+	void OnTriggerEnter (Collider other)
 		{
-		Corerender1.enabled = false;
-		Corecol1.enabled = false;
-		Core1.spatialBlend = 0;
-		foreach (Transform child in transform) {
-			child.gameObject.SetActive(false);
-		}	
+		    Corerender1.enabled = false;
+		    Corecol1.enabled = false;
+		    Core1.spatialBlend = 0;
+		    foreach (Transform child in transform)
+            {
+			    child.gameObject.SetActive(false);
+		    }	
 		
-		transform.GetChild(1).gameObject.SetActive(false);
-	
-			
-			
+		    transform.GetChild(1).gameObject.SetActive(false);	
 		}
 }
